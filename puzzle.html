@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Squeaky</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="puzzle.css"/>
+</head>
+<body>
+  <div id="curtain">
+    <div class="curtain-left"></div>
+    <div class="curtain-right"></div>
+  </div>
+
+  <nav id="navbar">
+    <div class="nav-logo">Squeaky</div>
+    <div class="nav-center">
+      <a href="#" id="nav-play-link" onclick="navigateToPuzzle(event)">Play Puzzle</a>
+    </div>
+    <div class="nav-contact">
+      <a href="https://www.instagram.com/boetzack?igsh=Z296NXNnMzBrM2cw&utm_source=qr" target="_blank" rel="noopener">
+        <i class="ri-instagram-line"></i> Contact Me
+      </a>
+    </div>
+  </nav>
+
+  <section id="home" class="page active">
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+
+    <div class="home-content">
+      <p class="home-eyebrow">
+        <span class="eyebrow-line"></span>
+        for her
+        <span class="eyebrow-line"></span>
+      </p>
+      <h1 class="home-title">
+        A little <em>something</em><br/>made with love
+      </h1>
+      <p class="home-desc">
+        Piece us together, one fragment at a time.
+      </p>
+      <div class="home-hearts">
+        <i class="ri-heart-fill"></i>
+        <i class="ri-heart-line"></i>
+        <i class="ri-heart-fill"></i>
+      </div>
+    </div>
+
+    <div class="deco-line"></div>
+  </section>
+
+  <section id="puzzle" class="page">
+
+    <div class="orb orb-p1"></div>
+    <div class="orb orb-p2"></div>
+
+    <div class="puzzle-header">
+      <p class="puzzle-eyebrow">drag each piece to its place</p>
+      <h2 class="puzzle-title">Piece <em>Us</em> Together</h2>
+      <div class="header-ornament">
+        <span></span><i class="ri-heart-fill"></i><span></span>
+      </div>
+    </div>
+
+    <div id="choose-step">
+      <p class="choose-label">Choose a picture to puzzle</p>
+      <div class="photo-choices">
+        <div class="photo-choice" onclick="startPuzzle(this)" data-src="photo1.jpeg">
+          <img src="photo1.jpeg" alt="Photo 1"
+            onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22220%22 height=%22280%22%3E%3Cdefs%3E%3ClinearGradient id=%22g%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22%3E%3Cstop offset=%220%25%22 stop-color=%22%23f9a8d4%22/%3E%3Cstop offset=%22100%25%22 stop-color=%22%23ec4899%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=%22url(%23g)%22 width=%22220%22 height=%22280%22/%3E%3Ctext fill=%22white%22 font-family=%22serif%22 font-size=%2215%22 x=%2250%25%22 y=%2248%25%22 text-anchor=%22middle%22%3EPhoto 1%3C/text%3E%3Ctext fill=%22rgba(255,255,255,0.7)%22 font-family=%22serif%22 font-size=%2210%22 x=%2250%25%22 y=%2260%25%22 text-anchor=%22middle%22%3EReplace src%3C/text%3E%3C/svg%3E'"/>
+          <div class="photo-overlay"><i class="ri-cursor-line"></i><span>Select</span></div>
+          <div class="photo-num">01</div>
+        </div>
+
+        <div class="photo-choice" onclick="startPuzzle(this)" data-src="photo2.jpg">
+          <img src="photo2.jpg" alt="Photo 2"
+            onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22220%22 height=%22280%22%3E%3Cdefs%3E%3ClinearGradient id=%22g%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22%3E%3Cstop offset=%220%25%22 stop-color=%22%23fbcfe8%22/%3E%3Cstop offset=%22100%25%22 stop-color=%22%23db2777%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=%22url(%23g)%22 width=%22220%22 height=%22280%22/%3E%3Ctext fill=%22white%22 font-family=%22serif%22 font-size=%2215%22 x=%2250%25%22 y=%2248%25%22 text-anchor=%22middle%22%3EPhoto 2%3C/text%3E%3Ctext fill=%22rgba(255,255,255,0.7)%22 font-family=%22serif%22 font-size=%2210%22 x=%2250%25%22 y=%2260%25%22 text-anchor=%22middle%22%3EReplace src%3C/text%3E%3C/svg%3E'"/>
+          <div class="photo-overlay"><i class="ri-cursor-line"></i><span>Select</span></div>
+          <div class="photo-num">02</div>
+        </div>
+
+        <div class="photo-choice upload-card" onclick="document.getElementById('file-input').click()">
+          <i class="ri-image-add-line"></i>
+          <span>Upload Photo</span>
+          <p>your own picture</p>
+        </div>
+        <input type="file" id="file-input" accept="image/*" onchange="handleUpload(event)"/>
+      </div>
+    </div>
+
+    <div id="game-step">
+      <div class="game-bar">
+        <button class="back-btn" onclick="backToChoose()">
+          <i class="ri-arrow-left-s-line"></i> Back
+        </button>
+        <div class="move-pill">
+          <i class="ri-cursor-line"></i>
+          <span id="moves-count">0</span> moves
+        </div>
+      </div>
+
+      <div class="game-layout">
+        <div class="board-col">
+          <p class="col-label">Drop here</p>
+          <div id="puzzle-board"></div>
+        </div>
+
+        <div class="tray-col">
+          <p class="col-label">Pieces</p>
+          <div id="pieces-tray"></div>
+          <div class="puzzle-controls">
+            <button class="ctrl-btn peek-btn" id="peek-btn" onclick="togglePeek()">
+              <i class="ri-eye-2-line"></i> Peek
+            </button>
+            <button class="ctrl-btn shuffle-btn" onclick="shufflePieces()">
+              <i class="ri-shuffle-line"></i> Shuffle
+            </button>
+          </div>
+          <p class="hint-text">Tip: drag pieces to the board <em>or</em> click two placed pieces to swap them.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div id="peek-overlay" onclick="hidePeek()">
+    <div class="peek-inner">
+      <img id="peek-img" src="" alt="Full photo"/>
+      <div id="peek-timer" class="peek-timer"></div>
+      <button class="peek-close" onclick="hidePeek()"><i class="ri-close-line"></i></button>
+    </div>
+  </div>
+
+  <div id="win-screen">
+    <div class="win-bg"></div>
+    <div id="confetti-wrap" class="confetti-wrap"></div>
+    <div class="win-content">
+      <div class="win-hearts">
+        <i class="ri-heart-fill"></i>
+        <i class="ri-heart-fill big"></i>
+        <i class="ri-heart-fill"></i>
+      </div>
+      <h2 class="win-title"><strong>I Love You</strong></h2>
+      <p class="win-sub">You pieced us together ✦</p>
+      <div class="win-img-wrap">
+        <img id="win-full-img" src="" alt="Complete"/>
+      </div>
+      <button class="win-btn" onclick="resetGame()">
+        <i class="ri-restart-line"></i> Play Again
+      </button>
+    </div>
+  </div>
+
+  <script src="puzzle.js"></script>
+</body>
+</html>
